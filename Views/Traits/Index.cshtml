@@ -1,0 +1,58 @@
+﻿@model EZTFT.ViewModels.TraitViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table id="traitAvgPlacement" style="text-align: center" class="table table-­bordered table­‐hover">
+    <thead>
+        <tr>          
+            <th scope="col">Name</th>
+            <th scope="col">Trait Tier</th>
+            <th scope="col"># Of Plays</th>
+            <th scope="col">AvgPlacement</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+            $(document).ready(function () {
+                $("#traitAvgPlacement").DataTable({
+                    ajax: {
+                        url: "/api/traitAvgPlacement",
+                        //dataSrc: ""
+                        dataSrc: function (json) {
+                            var return_data = new Array();
+                            for (var i = 0; i < json.length; i++)
+                            {
+                                return_data.push({
+                                    'name': json[i].name.slice(5),
+                                    'tier_current': json[i].tier_current,
+                                    'TraitMode': json[i].TraitMode,
+                                    'AvgPlacement': json[i].AvgPlacement
+                                })
+                            }
+                            return return_data;
+                        }
+                    },
+                    columns: [
+                        {
+                            data: "name"
+                        },
+                        {
+                            data: "tier_current"
+                        },
+                        {
+                            data: "TraitMode"
+                        },
+                        {
+                            data: "AvgPlacement"
+                        }
+                    ]
+                });
+            });
+    </script>
+}

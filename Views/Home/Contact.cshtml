@@ -1,0 +1,32 @@
+﻿@model EZTFT.ViewModels.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>SummonerName: @Model.challengerLeague.entries[0].summonerName</p>
+<p>SummonerId: @Model.challengerLeague.entries[0].summonerId</p>
+<p>LeaguePoints: @Model.challengerLeague.entries[0].leaguePoints</p>
+
+<p>Puuid: @Model.summoner.puuid</p>
+<br />
+<p>Match Id: @Model.matchIds[0]</p>
+<br />
+<p>Unit Id: @Model.matchDto.info.participants[0].units[0].character_id</p>
+<p>Placement: @Model.matchDto.info.participants[0].placement</p>
+<br />
+<p>@Model.matchIdCheckResult</p>
+
+
+@*<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>*@
