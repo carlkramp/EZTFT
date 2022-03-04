@@ -3,9 +3,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<table id="traitAvgPlacement" style="text-align: center" class="table table-­bordered table­‐hover">
-    <thead>
+<br />
+<table id="traitAvgPlacement" style="text-align: center" class="table table­‐hover">
+    <thead class="table-primary">
         <tr>          
             <th scope="col">Name</th>
             <th scope="col">Trait Tier</th>
@@ -13,7 +13,7 @@
             <th scope="col">AvgPlacement</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="font-size: 24px; font-weight: 600;" class="table-primary" >
     </tbody>
 </table>
 
@@ -23,13 +23,13 @@
                 $("#traitAvgPlacement").DataTable({
                     ajax: {
                         url: "/api/traitAvgPlacement",
-                        //dataSrc: ""
                         dataSrc: function (json) {
                             var return_data = new Array();
-                            for (var i = 0; i < json.length; i++)
+                            for (var i = 0; i < json.length; i++)                              
                             {
+                                const nameArray = json[i].name.split("_");
                                 return_data.push({
-                                    'name': json[i].name.slice(5),
+                                    'name': nameArray[1],
                                     'tier_current': json[i].tier_current,
                                     'TraitMode': json[i].TraitMode,
                                     'AvgPlacement': json[i].AvgPlacement
@@ -40,7 +40,10 @@
                     },
                     columns: [
                         {
-                            data: "name"
+                            data: "name",
+                            render: function (data) {
+                                return '<p><img style="height: 48px; width: 48px;  background-color:white;padding:10px;" src="/Images/Traits/trait_icon_6_' + data + '.png"/>' + " - " + data + '</p>';
+                            }
                         },
                         {
                             data: "tier_current"

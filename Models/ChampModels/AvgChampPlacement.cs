@@ -11,5 +11,7 @@ namespace EZTFT.Models
         public double avgPlacement { get; set; }
         [Key]
         public string character_id { get; set; }
+        public int champMode { get; set; }
+        public double? playRate { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace EZTFT.Models.MatchModels
     {
         [Key]
         public string matchId { get; set; }
+
+        public string gameVersion { get; set; }
     }
 }

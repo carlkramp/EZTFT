@@ -62,7 +62,7 @@ namespace EZTFT.Controllers
 
             using (var client = new HttpClient())
             {
-                int x = 0;
+                int x = 4;
                 var summonerId = challengerLeague.entries[x].summonerId;
                 var url = "https://na1.api.riotgames.com/tft/summoner/v1/summoners/" + summonerId;
                 client.DefaultRequestHeaders.Add(apiKeyHeader, apiKey);
@@ -122,7 +122,7 @@ namespace EZTFT.Controllers
         {
             List<MatchDto> matchDtos = new List<MatchDto>();
             MatchDto matchDto = new MatchDto();
-            //bool validMatchId = false;
+            var rankedTFTQueueId = 1100;
             int x = 0;
 
             do
@@ -130,7 +130,7 @@ namespace EZTFT.Controllers
                 using (var client = new HttpClient())
                 {
                     
-                    var matchid = matchIds[x];
+                    var matchid = matchIds[x];                    
                     var url = new Uri("https://americas.api.riotgames.com/tft/match/v1/matches/" + matchid);
 
                     client.DefaultRequestHeaders.Add(apiKeyHeader, apiKey);
@@ -146,16 +146,16 @@ namespace EZTFT.Controllers
 
                         matchDto = readTask.Result;
 
-                        if (x == 19 && matchDto.info.queue_id == 74)
+                        if (x == 19 && matchDto.info.queue_id == rankedTFTQueueId)
                         {
                             matchDtos.Add(matchDto);
                             return matchDtos;
                         }
-                        else if (x == 19 && matchDto.info.queue_id != 74)
+                        else if (x == 19 && matchDto.info.queue_id != rankedTFTQueueId)
                         {
                             return matchDtos;
                         }
-                        else if (matchDto.info.queue_id == 74)
+                        else if (matchDto.info.queue_id == rankedTFTQueueId)
                         {
                             matchDtos.Add(matchDto);
                             x++;
@@ -170,7 +170,7 @@ namespace EZTFT.Controllers
                         throw new ArgumentException("Error getting matchDto from Api");
                     }
                 }
-            } while (x < 19);
+            } while (x < 20);
 
             throw new ArgumentException("Error getting matchDto from Api, how did you get here");
         }
@@ -187,11 +187,13 @@ namespace EZTFT.Controllers
                            .FirstOrDefault();
 
                 Comp comp = new Comp();
+                Champ champ = new Champ();
                 MatchId newMatchId = new MatchId();
 
                 if (existingMatchCheck == null)
                 {
                     newMatchId.matchId = match.metadata.match_id;
+                    newMatchId.gameVersion = match.info.game_version;
                     _context.MatchIds.Add(newMatchId);
                     _context.SaveChanges();
 
@@ -200,11 +202,22 @@ namespace EZTFT.Controllers
                         comp.placement = participant.placement;
                         comp.units = participant.units;
                         comp.traits = participant.traits;
+                        champ.placement = participant.placement;
 
                         _context.Comps.Add(comp);
                         _context.SaveChanges();
 
+                        foreach (var unit in participant.units)
+                        {
+                            
+                            champ.character_id = unit.character_id;
+                            _context.Champs.Add(champ);
+                            _context.SaveChanges();
+
+                        }
                     }
+
+                   
                 }
 
                 else

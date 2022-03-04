@@ -2140,6 +2140,19 @@ progress {
   --bs-table-hover-color: #000;
   color: #000;
   border-color: #c8c1d3;
+  border: 1px solid;
+}
+
+.table-notUgly {
+    --bs-table-bg: #8366A2;
+    --bs-table-striped-bg: #d3cbde;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #c8c1d3;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #cdc6d8;
+    --bs-table-hover-color: #000;
+    color: #000;
+    border-color: #c8c1d3;
 }
 
 .table-secondary {

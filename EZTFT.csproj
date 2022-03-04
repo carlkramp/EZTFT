@@ -187,6 +187,38 @@
     <Compile Include="Migrations\202202142310125_AddTraitAvgPlacementToDb.Designer.cs">
       <DependentUpon>202202142310125_AddTraitAvgPlacementToDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202221924127_AddModeToAvgChampPlacementModel.cs" />
+    <Compile Include="Migrations\202202221924127_AddModeToAvgChampPlacementModel.Designer.cs">
+      <DependentUpon>202202221924127_AddModeToAvgChampPlacementModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232123258_addGameVersionToDatabase.cs" />
+    <Compile Include="Migrations\202202232123258_addGameVersionToDatabase.Designer.cs">
+      <DependentUpon>202202232123258_addGameVersionToDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232142272_addPlayRateToAvgChampPlacement.cs" />
+    <Compile Include="Migrations\202202232142272_addPlayRateToAvgChampPlacement.Designer.cs">
+      <DependentUpon>202202232142272_addPlayRateToAvgChampPlacement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232205506_changePlayRateToDouble.cs" />
+    <Compile Include="Migrations\202202232205506_changePlayRateToDouble.Designer.cs">
+      <DependentUpon>202202232205506_changePlayRateToDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232253243_addAvgChampPlacementsBackToDatabaser.cs" />
+    <Compile Include="Migrations\202202232253243_addAvgChampPlacementsBackToDatabaser.Designer.cs">
+      <DependentUpon>202202232253243_addAvgChampPlacementsBackToDatabaser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232302195_ChangeAvgChampPlacements.cs" />
+    <Compile Include="Migrations\202202232302195_ChangeAvgChampPlacements.Designer.cs">
+      <DependentUpon>202202232302195_ChangeAvgChampPlacements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232306466_ChangePlayRateToNullable.cs" />
+    <Compile Include="Migrations\202202232306466_ChangePlayRateToNullable.Designer.cs">
+      <DependentUpon>202202232306466_ChangePlayRateToNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202232310103_ChangePlayRateToNullable2.cs" />
+    <Compile Include="Migrations\202202232310103_ChangePlayRateToNullable2.Designer.cs">
+      <DependentUpon>202202232310103_ChangePlayRateToNullable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ChampModels\AvgChampPlacement.cs" />
@@ -329,162 +361,196 @@
     <Content Include="Content\DataTables\css\select.foundation.min.css" />
     <Content Include="Content\DataTables\css\select.jqueryui.css" />
     <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\images\arrow-down-up.svg" />
     <Content Include="Content\DataTables\images\details_close.png" />
     <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort-down-alt.svg" />
+    <Content Include="Content\DataTables\images\sort-up.svg" />
     <Content Include="Content\DataTables\images\sort_asc.png" />
     <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
-    <Content Include="Content\DataTables\images\sort_both.png" />
-    <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Aatrox.png" />
-    <Content Include="Images\Ahri.png" />
-    <Content Include="Images\Akali.png" />
-    <Content Include="Images\Alistar.png" />
-    <Content Include="Images\Amumu.png" />
-    <Content Include="Images\Anivia.png" />
-    <Content Include="Images\Annie.png" />
-    <Content Include="Images\Ashe.png" />
-    <Content Include="Images\AurelionSol.png" />
-    <Content Include="Images\Azir.png" />
-    <Content Include="Images\Bard.png" />
-    <Content Include="Images\Blitzcrank.png" />
-    <Content Include="Images\Brand.png" />
-    <Content Include="Images\Braum.png" />
-    <Content Include="Images\Caitlyn.png" />
-    <Content Include="Images\Camille.png" />
-    <Content Include="Images\Cassiopeia.png" />
-    <Content Include="Images\Chogath.png" />
-    <Content Include="Images\Corki.png" />
-    <Content Include="Images\Darius.png" />
-    <Content Include="Images\Diana.png" />
-    <Content Include="Images\Draven.png" />
-    <Content Include="Images\DrMundo.png" />
-    <Content Include="Images\Ekko.png" />
-    <Content Include="Images\Elise.png" />
-    <Content Include="Images\Evelynn.png" />
-    <Content Include="Images\Ezreal.png" />
-    <Content Include="Images\Fiddlesticks.png" />
-    <Content Include="Images\Fiora.png" />
-    <Content Include="Images\Fizz.png" />
-    <Content Include="Images\Galio.png" />
-    <Content Include="Images\Gangplank.png" />
-    <Content Include="Images\Garen.png" />
-    <Content Include="Images\Gnar.png" />
-    <Content Include="Images\Gragas.png" />
-    <Content Include="Images\Graves.png" />
-    <Content Include="Images\Hecarim.png" />
-    <Content Include="Images\Heimerdinger.png" />
-    <Content Include="Images\Illaoi.png" />
-    <Content Include="Images\Irelia.png" />
-    <Content Include="Images\Ivern.png" />
-    <Content Include="Images\Janna.png" />
-    <Content Include="Images\JarvanIV.png" />
-    <Content Include="Images\Jax.png" />
-    <Content Include="Images\Jayce.png" />
-    <Content Include="Images\Jhin.png" />
-    <Content Include="Images\Jinx.png" />
-    <Content Include="Images\Kaisa.png" />
-    <Content Include="Images\Kalista.png" />
-    <Content Include="Images\Karma.png" />
-    <Content Include="Images\Karthus.png" />
-    <Content Include="Images\Kassadin.png" />
-    <Content Include="Images\Katarina.png" />
-    <Content Include="Images\Kayle.png" />
-    <Content Include="Images\Kayn.png" />
-    <Content Include="Images\Kennen.png" />
-    <Content Include="Images\Khazix.png" />
-    <Content Include="Images\Kindred.png" />
-    <Content Include="Images\Kled.png" />
-    <Content Include="Images\KogMaw.png" />
-    <Content Include="Images\Leblanc.png" />
-    <Content Include="Images\LeeSin.png" />
-    <Content Include="Images\Leona.png" />
-    <Content Include="Images\Lissandra.png" />
-    <Content Include="Images\Lucian.png" />
-    <Content Include="Images\Lulu.png" />
-    <Content Include="Images\Lux.png" />
-    <Content Include="Images\Malphite.png" />
-    <Content Include="Images\Malzahar.png" />
-    <Content Include="Images\Maokai.png" />
-    <Content Include="Images\MasterYi.png" />
-    <Content Include="Images\MissFortune.png" />
-    <Content Include="Images\MonkeyKing.png" />
-    <Content Include="Images\Mordekaiser.png" />
-    <Content Include="Images\Morgana.png" />
-    <Content Include="Images\Nami.png" />
-    <Content Include="Images\Nasus.png" />
-    <Content Include="Images\Nautilus.png" />
-    <Content Include="Images\Neeko.png" />
-    <Content Include="Images\Nidalee.png" />
-    <Content Include="Images\Nocturne.png" />
-    <Content Include="Images\Nunu.png" />
-    <Content Include="Images\Olaf.png" />
-    <Content Include="Images\Orianna.png" />
-    <Content Include="Images\Ornn.png" />
-    <Content Include="Images\Pantheon.png" />
-    <Content Include="Images\Poppy.png" />
-    <Content Include="Images\Pyke.png" />
-    <Content Include="Images\Quinn.png" />
-    <Content Include="Images\Rakan.png" />
-    <Content Include="Images\Rammus.png" />
-    <Content Include="Images\RekSai.png" />
-    <Content Include="Images\Renata_Glasc.png" />
-    <Content Include="Images\Renekton.png" />
-    <Content Include="Images\Rengar.png" />
-    <Content Include="Images\Riven.png" />
-    <Content Include="Images\Rumble.png" />
-    <Content Include="Images\Ryze.png" />
-    <Content Include="Images\Sejuani.png" />
-    <Content Include="Images\Shaco.png" />
-    <Content Include="Images\Shen.png" />
-    <Content Include="Images\Shyvana.png" />
-    <Content Include="Images\Silco.png" />
-    <Content Include="Images\Singed.png" />
-    <Content Include="Images\Sion.png" />
-    <Content Include="Images\Sivir.png" />
-    <Content Include="Images\Skarner.png" />
-    <Content Include="Images\Sona.png" />
-    <Content Include="Images\Soraka.png" />
-    <Content Include="Images\Swain.png" />
-    <Content Include="Images\Sylas.png" />
-    <Content Include="Images\Syndra.png" />
-    <Content Include="Images\TahmKench.png" />
-    <Content Include="Images\Taliyah.png" />
-    <Content Include="Images\Talon.png" />
-    <Content Include="Images\Taric.png" />
-    <Content Include="Images\Teemo.png" />
-    <Content Include="Images\Thresh.png" />
-    <Content Include="Images\Tristana.png" />
-    <Content Include="Images\Trundle.png" />
-    <Content Include="Images\Tryndamere.png" />
-    <Content Include="Images\TwistedFate.png" />
-    <Content Include="Images\Twitch.png" />
-    <Content Include="Images\Udyr.png" />
-    <Content Include="Images\Urgot.png" />
-    <Content Include="Images\Varus.png" />
-    <Content Include="Images\Vayne.png" />
-    <Content Include="Images\Veigar.png" />
-    <Content Include="Images\Velkoz.png" />
-    <Content Include="Images\Vi.png" />
-    <Content Include="Images\Viktor.png" />
-    <Content Include="Images\Vladimir.png" />
-    <Content Include="Images\Volibear.png" />
-    <Content Include="Images\Warwick.png" />
-    <Content Include="Images\Xayah.png" />
-    <Content Include="Images\Xerath.png" />
-    <Content Include="Images\XinZhao.png" />
-    <Content Include="Images\Yasuo.png" />
-    <Content Include="Images\Yorick.png" />
-    <Content Include="Images\Zac.png" />
-    <Content Include="Images\Zed.png" />
-    <Content Include="Images\Ziggs.png" />
-    <Content Include="Images\Zilean.png" />
-    <Content Include="Images\Zoe.png" />
-    <Content Include="Images\Zyra.png" />
+    <Content Include="Images\Champs\Aatrox.png" />
+    <Content Include="Images\Champs\Ahri.png" />
+    <Content Include="Images\Champs\Akali.png" />
+    <Content Include="Images\Champs\Alistar.png" />
+    <Content Include="Images\Champs\Amumu.png" />
+    <Content Include="Images\Champs\Anivia.png" />
+    <Content Include="Images\Champs\Annie.png" />
+    <Content Include="Images\Champs\Ashe.png" />
+    <Content Include="Images\Champs\AurelionSol.png" />
+    <Content Include="Images\Champs\Azir.png" />
+    <Content Include="Images\Champs\Bard.png" />
+    <Content Include="Images\Champs\Blitzcrank.png" />
+    <Content Include="Images\Champs\Brand.png" />
+    <Content Include="Images\Champs\Braum.png" />
+    <Content Include="Images\Champs\Caitlyn.png" />
+    <Content Include="Images\Champs\Camille.png" />
+    <Content Include="Images\Champs\Cassiopeia.png" />
+    <Content Include="Images\Champs\Chogath.png" />
+    <Content Include="Images\Champs\Corki.png" />
+    <Content Include="Images\Champs\Darius.png" />
+    <Content Include="Images\Champs\Diana.png" />
+    <Content Include="Images\Champs\Draven.png" />
+    <Content Include="Images\Champs\DrMundo.png" />
+    <Content Include="Images\Champs\Ekko.png" />
+    <Content Include="Images\Champs\Elise.png" />
+    <Content Include="Images\Champs\Evelynn.png" />
+    <Content Include="Images\Champs\Ezreal.png" />
+    <Content Include="Images\Champs\Fiddlesticks.png" />
+    <Content Include="Images\Champs\Fiora.png" />
+    <Content Include="Images\Champs\Fizz.png" />
+    <Content Include="Images\Champs\Galio.png" />
+    <Content Include="Images\Champs\Gangplank.png" />
+    <Content Include="Images\Champs\Garen.png" />
+    <Content Include="Images\Champs\Gnar.png" />
+    <Content Include="Images\Champs\Gragas.png" />
+    <Content Include="Images\Champs\Graves.png" />
+    <Content Include="Images\Champs\Hecarim.png" />
+    <Content Include="Images\Champs\Heimerdinger.png" />
+    <Content Include="Images\Champs\Illaoi.png" />
+    <Content Include="Images\Champs\Irelia.png" />
+    <Content Include="Images\Champs\Ivern.png" />
+    <Content Include="Images\Champs\Janna.png" />
+    <Content Include="Images\Champs\JarvanIV.png" />
+    <Content Include="Images\Champs\Jax.png" />
+    <Content Include="Images\Champs\Jayce.png" />
+    <Content Include="Images\Champs\Jhin.png" />
+    <Content Include="Images\Champs\Jinx.png" />
+    <Content Include="Images\Champs\Kaisa.png" />
+    <Content Include="Images\Champs\Kalista.png" />
+    <Content Include="Images\Champs\Karma.png" />
+    <Content Include="Images\Champs\Karthus.png" />
+    <Content Include="Images\Champs\Kassadin.png" />
+    <Content Include="Images\Champs\Katarina.png" />
+    <Content Include="Images\Champs\Kayle.png" />
+    <Content Include="Images\Champs\Kayn.png" />
+    <Content Include="Images\Champs\Kennen.png" />
+    <Content Include="Images\Champs\Khazix.png" />
+    <Content Include="Images\Champs\Kindred.png" />
+    <Content Include="Images\Champs\Kled.png" />
+    <Content Include="Images\Champs\KogMaw.png" />
+    <Content Include="Images\Champs\Leblanc.png" />
+    <Content Include="Images\Champs\LeeSin.png" />
+    <Content Include="Images\Champs\Leona.png" />
+    <Content Include="Images\Champs\Lissandra.png" />
+    <Content Include="Images\Champs\Lucian.png" />
+    <Content Include="Images\Champs\Lulu.png" />
+    <Content Include="Images\Champs\Lux.png" />
+    <Content Include="Images\Champs\Malphite.png" />
+    <Content Include="Images\Champs\Malzahar.png" />
+    <Content Include="Images\Champs\Maokai.png" />
+    <Content Include="Images\Champs\MasterYi.png" />
+    <Content Include="Images\Champs\MissFortune.png" />
+    <Content Include="Images\Champs\MonkeyKing.png" />
+    <Content Include="Images\Champs\Mordekaiser.png" />
+    <Content Include="Images\Champs\Morgana.png" />
+    <Content Include="Images\Champs\Nami.png" />
+    <Content Include="Images\Champs\Nasus.png" />
+    <Content Include="Images\Champs\Nautilus.png" />
+    <Content Include="Images\Champs\Neeko.png" />
+    <Content Include="Images\Champs\Nidalee.png" />
+    <Content Include="Images\Champs\Nocturne.png" />
+    <Content Include="Images\Champs\Nunu.png" />
+    <Content Include="Images\Champs\Olaf.png" />
+    <Content Include="Images\Champs\Orianna.png" />
+    <Content Include="Images\Champs\Ornn.png" />
+    <Content Include="Images\Champs\Pantheon.png" />
+    <Content Include="Images\Champs\Poppy.png" />
+    <Content Include="Images\Champs\Pyke.png" />
+    <Content Include="Images\Champs\Quinn.png" />
+    <Content Include="Images\Champs\Rakan.png" />
+    <Content Include="Images\Champs\Rammus.png" />
+    <Content Include="Images\Champs\RekSai.png" />
+    <Content Include="Images\Champs\Renata.png" />
+    <Content Include="Images\Champs\Renekton.png" />
+    <Content Include="Images\Champs\Rengar.png" />
+    <Content Include="Images\Champs\Riven.png" />
+    <Content Include="Images\Champs\Rumble.png" />
+    <Content Include="Images\Champs\Ryze.png" />
+    <Content Include="Images\Champs\Sejuani.png" />
+    <Content Include="Images\Champs\Senna.png" />
+    <Content Include="Images\Champs\Seraphine.png" />
+    <Content Include="Images\Champs\Shaco.png" />
+    <Content Include="Images\Champs\Shen.png" />
+    <Content Include="Images\Champs\Shyvana.png" />
+    <Content Include="Images\Champs\Silco.png" />
+    <Content Include="Images\Champs\Singed.png" />
+    <Content Include="Images\Champs\Sion.png" />
+    <Content Include="Images\Champs\Sivir.png" />
+    <Content Include="Images\Champs\Skarner.png" />
+    <Content Include="Images\Champs\Sona.png" />
+    <Content Include="Images\Champs\Soraka.png" />
+    <Content Include="Images\Champs\Swain.png" />
+    <Content Include="Images\Champs\Sylas.png" />
+    <Content Include="Images\Champs\Syndra.png" />
+    <Content Include="Images\Champs\TahmKench.png" />
+    <Content Include="Images\Champs\Taliyah.png" />
+    <Content Include="Images\Champs\Talon.png" />
+    <Content Include="Images\Champs\Taric.png" />
+    <Content Include="Images\Champs\Teemo.png" />
+    <Content Include="Images\Champs\Thresh.png" />
+    <Content Include="Images\Traits\trait_icon_6_arcanist.png" />
+    <Content Include="Images\Traits\trait_icon_6_assassin.png" />
+    <Content Include="Images\Traits\trait_icon_6_bruiser.png" />
+    <Content Include="Images\Traits\trait_icon_6_challenger.png" />
+    <Content Include="Images\Traits\trait_icon_6_chemtech.png" />
+    <Content Include="Images\Traits\trait_icon_6_clockwork.png" />
+    <Content Include="Images\Traits\trait_icon_6_colossus.png" />
+    <Content Include="Images\Traits\trait_icon_6_debonair.png" />
+    <Content Include="Images\Traits\trait_icon_6_enchanter.png" />
+    <Content Include="Images\Traits\trait_icon_6_enforcer.png" />
+    <Content Include="Images\Traits\trait_icon_6_mutant.png" />
+    <Content Include="Images\Traits\trait_icon_6_glutton.png" />
+    <Content Include="Images\Traits\trait_icon_6_bodyguard.png" />
+    <Content Include="Images\Traits\trait_icon_6_imperial.png" />
+    <Content Include="Images\Traits\trait_icon_6_innovator.png" />
+    <Content Include="Images\Traits\trait_icon_6_mastermind.png" />
+    <Content Include="Images\Traits\trait_icon_6_mercenary.png" />
+    <Content Include="Images\Traits\trait_icon_6_rivals.png" />
+    <Content Include="Images\Traits\trait_icon_6_scholar.png" />
+    <Content Include="Images\Traits\trait_icon_6_scrap.png" />
+    <Content Include="Images\Traits\trait_icon_6_sniper.png" />
+    <Content Include="Images\Traits\trait_icon_6_socialite.png" />
+    <Content Include="Images\Traits\trait_icon_6_striker.png" />
+    <Content Include="Images\Traits\trait_icon_6_syndicate.png" />
+    <Content Include="Images\Traits\trait_icon_6_transformer.png" />
+    <Content Include="Images\Traits\trait_icon_6_twinshot.png" />
+    <Content Include="Images\Traits\trait_icon_6_yordle.png" />
+    <Content Include="Images\Traits\trait_icon_6_yordlelord.png" />
+    <Content Include="Images\Champs\Tristana.png" />
+    <Content Include="Images\Champs\Trundle.png" />
+    <Content Include="Images\Champs\Tryndamere.png" />
+    <Content Include="Images\Champs\TwistedFate.png" />
+    <Content Include="Images\Champs\Twitch.png" />
+    <Content Include="Images\Champs\Udyr.png" />
+    <Content Include="Images\Champs\Urgot.png" />
+    <Content Include="Images\Champs\Varus.png" />
+    <Content Include="Images\Champs\Vayne.png" />
+    <Content Include="Images\Champs\Veigar.png" />
+    <Content Include="Images\Champs\Velkoz.png" />
+    <Content Include="Images\Champs\Vex.png" />
+    <Content Include="Images\Champs\Vi.png" />
+    <Content Include="Images\Champs\Viktor.png" />
+    <Content Include="Images\Champs\Vladimir.png" />
+    <Content Include="Images\Champs\Volibear.png" />
+    <Content Include="Images\Champs\Warwick.png" />
+    <Content Include="Images\Champs\Xayah.png" />
+    <Content Include="Images\Champs\Xerath.png" />
+    <Content Include="Images\Champs\XinZhao.png" />
+    <Content Include="Images\Champs\Yasuo.png" />
+    <Content Include="Images\Champs\Yorick.png" />
+    <Content Include="Images\Champs\Zac.png" />
+    <Content Include="Images\Champs\Zed.png" />
+    <Content Include="Images\Champs\Zeri.png" />
+    <Content Include="Images\Champs\Ziggs.png" />
+    <Content Include="Images\Champs\Zilean.png" />
+    <Content Include="Images\Champs\Zoe.png" />
+    <Content Include="Images\Champs\Zyra.png" />
+    <Content Include="Images\Traits\trait_icon_6_hextech.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -648,6 +714,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202142310125_AddTraitAvgPlacementToDb.resx">
       <DependentUpon>202202142310125_AddTraitAvgPlacementToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202221924127_AddModeToAvgChampPlacementModel.resx">
+      <DependentUpon>202202221924127_AddModeToAvgChampPlacementModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232123258_addGameVersionToDatabase.resx">
+      <DependentUpon>202202232123258_addGameVersionToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232142272_addPlayRateToAvgChampPlacement.resx">
+      <DependentUpon>202202232142272_addPlayRateToAvgChampPlacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232205506_changePlayRateToDouble.resx">
+      <DependentUpon>202202232205506_changePlayRateToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232253243_addAvgChampPlacementsBackToDatabaser.resx">
+      <DependentUpon>202202232253243_addAvgChampPlacementsBackToDatabaser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232302195_ChangeAvgChampPlacements.resx">
+      <DependentUpon>202202232302195_ChangeAvgChampPlacements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232306466_ChangePlayRateToNullable.resx">
+      <DependentUpon>202202232306466_ChangePlayRateToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202232310103_ChangePlayRateToNullable2.resx">
+      <DependentUpon>202202232310103_ChangePlayRateToNullable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

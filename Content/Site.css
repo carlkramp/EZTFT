@@ -1,12 +1,18 @@
 ﻿body {
     /*padding-top: 50px;*/
     padding-bottom: 20px;
+    background-color: #E0E8FF;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+   
+}
+
+.homeHeader {
+    text-align: center;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
