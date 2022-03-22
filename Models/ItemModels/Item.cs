@@ -9,14 +9,15 @@ namespace EZTFT.Models.ItemModels
     {
         public int id { get; set; }
 
+        public int item_id { get; set; }
+
+        public string desc { get; set; }
+
+        public string icon { get; set; }
+
         public string name { get; set; }
 
-        public string description { get; set; }
-
-        public bool isUnique { get; set; }
-
-        public bool isShadow { get; set; }
-
+        public bool unique { get; set; }
 
     }
 }

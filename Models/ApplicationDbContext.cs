@@ -1,4 +1,5 @@
 ﻿using EZTFT.Models.CompModels;
+using EZTFT.Models.ItemModels;
 using EZTFT.Models.MatchModels;
 using EZTFT.Models.TraitModels;
 using EZTFT.Models.Weather;
@@ -18,6 +19,9 @@ namespace EZTFT.Models
         public DbSet<AvgChampPlacement> AvgChampPlacements { get; set; } 
         public DbSet<Comp> Comps { get; set; }
         public DbSet<TraitAvgPlacement> TraitAvgPlacements { get; set; }
+        public DbSet<AvgItemPlacement> AvgItemPlacement { get; set; }
+        public DbSet<ItemStats> ItemStats { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Location> location { get; set; }
 
         public ApplicationDbContext()

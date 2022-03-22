@@ -106,3 +106,13 @@ C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.
 C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.ChangeAvgChampPlacements.resources
 C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.ChangePlayRateToNullable.resources
 C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.ChangePlayRateToNullable2.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddAvgItemPlacementToDatabase.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddItemsToChamp.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.ChangeChampItemsListToInt.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddItemsToChamp1.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddItemIdToItems.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.ChangeItemsToItemStats.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddUniqueItemsToDatabase.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddItemIdToItemClass.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.CommentOutIsShadowFromItemStats.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddNameToAvgItemPlacement.resources

@@ -16,6 +16,7 @@ namespace EZTFT.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
+
         // GET /api/avgChampPlacements
         public IEnumerable<AvgChampPlacement> GetAvgChampPlacements()
         {

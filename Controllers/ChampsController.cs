@@ -23,11 +23,11 @@ namespace EZTFT.Controllers
         // GET: Champs
         public ActionResult Index()
         {
-            List<AvgChampPlacement> champPlacements = new List<AvgChampPlacement>();
+            //List<AvgChampPlacement> champPlacements = new List<AvgChampPlacement>();
 
-            //FindAndSaveMatch();
+            ////FindAndSaveMatch();
 
-            //DropOldData();
+            ////DropOldData();
             //champPlacements = GetAverageChampPlacementsAndReturnList();
             //SaveAverageChampPlacementsToDatabase(champPlacements);
 
@@ -265,6 +265,7 @@ namespace EZTFT.Controllers
                 if (existingMatchCheck == null)
                 {
                     newMatchId.matchId = match.metadata.match_id;
+                    newMatchId.gameVersion = match.info.game_version;
                     _context.MatchIds.Add(newMatchId);
                     _context.SaveChanges();
 

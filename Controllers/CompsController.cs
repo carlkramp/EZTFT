@@ -1,8 +1,10 @@
 ﻿using EZTFT.Models;
 using EZTFT.Models.CompModels;
+using EZTFT.Models.ItemModels;
 using EZTFT.Models.MatchModels;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -23,7 +25,9 @@ namespace EZTFT.Controllers
         public ActionResult Index()
         {
             // Finds match, checks to see if match already exists in database, if not, saves match to MatchIds table and the list of comps in the match to the Comps table
+            //DropAllOldData();
             //FindAndSaveMatch();
+            
 
             return View();
         }
@@ -54,7 +58,7 @@ namespace EZTFT.Controllers
                     throw new ArgumentException("Error getting challengerLeague from Api");
                 }
             }
-        }
+        }        
 
         public Summoner GetSummoner(string apiKey, string apiKeyHeader, ChallengerLeague challengerLeague)
         {
@@ -189,6 +193,9 @@ namespace EZTFT.Controllers
                 Comp comp = new Comp();
                 Champ champ = new Champ();
                 MatchId newMatchId = new MatchId();
+                ItemStats itemStats = new ItemStats();
+                List<ItemStats> itemList = new List<ItemStats>();
+                Item item = new Item();
 
                 if (existingMatchCheck == null)
                 {
@@ -211,6 +218,31 @@ namespace EZTFT.Controllers
                         {
                             
                             champ.character_id = unit.character_id;
+                            itemList.Clear();                          
+
+                            if (unit.items.Count > 0)
+                            {
+                                for (int x = 0; x < unit.items.Count; x++)
+                                {
+                                    ItemStats itemStats1 = new ItemStats();
+                                    int itemId = unit.items[x];                                 
+
+                                    var itemQuery =
+                                        from dbItem in _context.Items
+                                        where dbItem.item_id == itemId
+                                        select dbItem;                                    
+
+                                    item = itemQuery.FirstOrDefault();
+                                    itemStats1.description = item.desc;
+                                    itemStats1.item_id = item.item_id;
+                                    itemStats1.isUnique = item.unique;
+                                    itemStats1.name = item.name;                                    
+                                    
+                                    itemList.Add(itemStats1);
+                                }
+                            }
+
+                            champ.items = itemList;
                             _context.Champs.Add(champ);
                             _context.SaveChanges();
 
@@ -260,6 +292,44 @@ namespace EZTFT.Controllers
 
             SaveMatches(matchDtoes);
 
+        }
+
+        public void DropAllOldData()
+        {
+            string queryString1 = "DELETE FROM TraitDtoes";
+            string queryString2 = "DELETE FROM UnitDtoes";
+            string queryString3 = "DELETE FROM TraitAvgPlacements";
+            string queryString4 = "DELETE FROM AvgItemPlacements";
+            string queryString5 = "DELETE FROM AvgChampPlacements";
+            string queryString6 = "DELETE FROM MatchIds";
+            string queryString7 = "DELETE FROM Comps";
+            string queryString8 = "DELETE FROM ItemStats";
+            string queryString9 = "DELETE FROM Champs";
+            string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command1 = new SqlCommand(queryString1, connection);
+                SqlCommand command2 = new SqlCommand(queryString2, connection);
+                SqlCommand command3 = new SqlCommand(queryString3, connection);
+                SqlCommand command4 = new SqlCommand(queryString4, connection);
+                SqlCommand command5 = new SqlCommand(queryString5, connection);
+                SqlCommand command6 = new SqlCommand(queryString6, connection);
+                SqlCommand command7 = new SqlCommand(queryString7, connection);
+                SqlCommand command8 = new SqlCommand(queryString8, connection);
+                SqlCommand command9 = new SqlCommand(queryString9, connection);
+                connection.Open();
+                command1.ExecuteNonQuery();
+                command2.ExecuteNonQuery();
+                command3.ExecuteNonQuery();
+                command4.ExecuteNonQuery();
+                command5.ExecuteNonQuery();
+                command6.ExecuteNonQuery();
+                command7.ExecuteNonQuery();
+                command8.ExecuteNonQuery();
+                command9.ExecuteNonQuery();
+
+            }
         }
 
         //public GetCompsAndReturnList()

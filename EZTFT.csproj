@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\AvgChampPlacementsController.cs" />
+    <Compile Include="Controllers\Api\AvgItemPlacementController.cs" />
     <Compile Include="Controllers\Api\ChampsController.cs" />
     <Compile Include="Controllers\Api\TraitAvgPlacementController.cs" />
     <Compile Include="Controllers\ChampsController.cs" />
@@ -219,12 +220,56 @@
     <Compile Include="Migrations\202202232310103_ChangePlayRateToNullable2.Designer.cs">
       <DependentUpon>202202232310103_ChangePlayRateToNullable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203081928393_AddAvgItemPlacementToDatabase.cs" />
+    <Compile Include="Migrations\202203081928393_AddAvgItemPlacementToDatabase.Designer.cs">
+      <DependentUpon>202203081928393_AddAvgItemPlacementToDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203081956067_AddItemsToChamp.cs" />
+    <Compile Include="Migrations\202203081956067_AddItemsToChamp.Designer.cs">
+      <DependentUpon>202203081956067_AddItemsToChamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203082020505_ChangeChampItemsListToInt.cs" />
+    <Compile Include="Migrations\202203082020505_ChangeChampItemsListToInt.Designer.cs">
+      <DependentUpon>202203082020505_ChangeChampItemsListToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203112231011_AddItemsToChamp1.cs" />
+    <Compile Include="Migrations\202203112231011_AddItemsToChamp1.Designer.cs">
+      <DependentUpon>202203112231011_AddItemsToChamp1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203112245111_AddItemIdToItems.cs" />
+    <Compile Include="Migrations\202203112245111_AddItemIdToItems.Designer.cs">
+      <DependentUpon>202203112245111_AddItemIdToItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203142019413_ChangeItemsToItemStats.cs" />
+    <Compile Include="Migrations\202203142019413_ChangeItemsToItemStats.Designer.cs">
+      <DependentUpon>202203142019413_ChangeItemsToItemStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203152021038_AddUniqueItemsToDatabase.cs" />
+    <Compile Include="Migrations\202203152021038_AddUniqueItemsToDatabase.Designer.cs">
+      <DependentUpon>202203152021038_AddUniqueItemsToDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203162000364_AddItemIdToItemClass.cs" />
+    <Compile Include="Migrations\202203162000364_AddItemIdToItemClass.Designer.cs">
+      <DependentUpon>202203162000364_AddItemIdToItemClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203171811039_CommentOutIsShadowFromItemStats.cs" />
+    <Compile Include="Migrations\202203171811039_CommentOutIsShadowFromItemStats.Designer.cs">
+      <DependentUpon>202203171811039_CommentOutIsShadowFromItemStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203172023380_AddNameToAvgItemPlacement.cs" />
+    <Compile Include="Migrations\202203172023380_AddNameToAvgItemPlacement.Designer.cs">
+      <DependentUpon>202203172023380_AddNameToAvgItemPlacement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ChampModels\AvgChampPlacement.cs" />
     <Compile Include="Models\ChallengerLeague.cs" />
     <Compile Include="Models\CompModels\Comp.cs" />
     <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\ItemModels\AvgItemPlacement.cs" />
+    <Compile Include="Models\ItemModels\CDResponseData.cs" />
+    <Compile Include="Models\ItemModels\Item.cs" />
+    <Compile Include="Models\ItemModels\ItemStats.cs" />
     <Compile Include="Models\MatchModels\InfoDto.cs" />
     <Compile Include="Models\MatchDto.cs" />
     <Compile Include="Models\MatchModels\MatchId.cs" />
@@ -493,6 +538,88 @@
     <Content Include="Images\Champs\Taric.png" />
     <Content Include="Images\Champs\Teemo.png" />
     <Content Include="Images\Champs\Thresh.png" />
+    <Content Include="Images\Items\B.F._Sword.png" />
+    <Content Include="Images\Items\Banshee%27s Silence.png" />
+    <Content Include="Images\Items\Banshee%27s_Claw.png" />
+    <Content Include="Images\Items\Blessed Bloodthirster.png" />
+    <Content Include="Images\Items\bloodthirster.png" />
+    <Content Include="Images\Items\blue_buff.png" />
+    <Content Include="Images\Items\blue_buff_radiant.png" />
+    <Content Include="Images\Items\bramble_vest.png" />
+    <Content Include="Images\Items\chain_vest.png" />
+    <Content Include="Images\Items\Chalice of Charity.png" />
+    <Content Include="Images\Items\Chalice_of_Power.png" />
+    <Content Include="Images\Items\Covalent Spark.png" />
+    <Content Include="Images\Items\death_blade.png" />
+    <Content Include="Images\Items\Demonslayer.png" />
+    <Content Include="Images\Items\Dragon%27s Will.png" />
+    <Content Include="Images\Items\Dragon%27s_Claw.png" />
+    <Content Include="Images\Items\Dvarapala_Stoneplate.png" />
+    <Content Include="Images\Items\edge_of_night.png" />
+    <Content Include="Images\Items\edge_of_night_radiant.png" />
+    <Content Include="Images\Items\Eternal Whisper.png" />
+    <Content Include="Images\Items\Fist of Fairness.png" />
+    <Content Include="Images\Items\frozen_heart.png" />
+    <Content Include="Images\Items\Frozen_Heart_of_Gold.png" />
+    <Content Include="Images\Items\gaints_belt.png" />
+    <Content Include="Images\Items\gargoyle_stoneplate.png" />
+    <Content Include="Images\Items\giant_slayer.png" />
+    <Content Include="Images\Items\Glamorous_Gauntlet.png" />
+    <Content Include="Images\Items\guardian_angel.png" />
+    <Content Include="Images\Items\Guinsoo%27s_Rageblade.png" />
+    <Content Include="Images\Items\Guinsoo%27s_Reckoning.png" />
+    <Content Include="Images\Items\Hand_Of_Justice.png" />
+    <Content Include="Images\Items\hextech_gunblade.png" />
+    <Content Include="Images\Items\Hextech_Lifeblade.png" />
+    <Content Include="Images\Items\infinity_edge.png" />
+    <Content Include="Images\Items\ionic_spark.png" />
+    <Content Include="Images\Items\Jeweled_Gauntlet.png" />
+    <Content Include="Images\Items\last_whisper.png" />
+    <Content Include="Images\Items\Locket_of_Targon_Prime.png" />
+    <Content Include="Images\Items\Lock_of_the_Iron_Solari.png" />
+    <Content Include="Images\Items\Luminous_Deathblade.png" />
+    <Content Include="Images\Items\Mistral.png" />
+    <Content Include="Images\Items\morellonomicon.png" />
+    <Content Include="Images\Items\More_More-ellonomicon.png" />
+    <Content Include="Images\Items\Needlessly_Large_Rod.png" />
+    <Content Include="Images\Items\negatron_cloak.png" />
+    <Content Include="Images\Items\Quickestsilver.png" />
+    <Content Include="Images\Items\quicksilver.png" />
+    <Content Include="Images\Items\Rabadon%27s_Ascended_Deathcap.png" />
+    <Content Include="Images\Items\Rabadon%27s_Deathcap.png" />
+    <Content Include="Images\Items\Radiant_Redemption.png" />
+    <Content Include="Images\Items\rapid_fire_cannon.png" />
+    <Content Include="Images\Items\Rapid_Lightcannon.png" />
+    <Content Include="Images\Items\Rascal%27s_Gloves.png" />
+    <Content Include="Images\Items\recurve_bow.png" />
+    <Content Include="Images\Items\redemption.png" />
+    <Content Include="Images\Items\Rosethorn_Vest.png" />
+    <Content Include="Images\Items\Runaan%27s_Hurricane.png" />
+    <Content Include="Images\Items\Runaan%27s_Tempest.png" />
+    <Content Include="Images\Items\Shroud_of_Reverance.png" />
+    <Content Include="Images\Items\shroud_of_stillness.png" />
+    <Content Include="Images\Items\sparring_gloves.png" />
+    <Content Include="Images\Items\spatula.png" />
+    <Content Include="Images\Items\Spear_of_Hirana.png" />
+    <Content Include="Images\Items\Spear_of_Shojin.png" />
+    <Content Include="Images\Items\Statikk%27s_Favor.png" />
+    <Content Include="Images\Items\statikk_shiv.png" />
+    <Content Include="Images\Items\sunfire_cape.png" />
+    <Content Include="Images\Items\Sunlight_Cape.png" />
+    <Content Include="Images\Items\tacticians_crown.png" />
+    <Content Include="Images\Items\tear_of_the_goddess.png" />
+    <Content Include="Images\Items\Thieves_Gloves.png" />
+    <Content Include="Images\Items\Titan%27s_Resolve.png" />
+    <Content Include="Images\Items\Titan%27s_Vow.png" />
+    <Content Include="Images\Items\Urf-Angel%27s_Staff.png" />
+    <Content Include="Images\Items\Warmog%27s_Armor.png" />
+    <Content Include="Images\Items\Warmog%27s_Pride.png" />
+    <Content Include="Images\Items\Zeke%27s_Harmony.png" />
+    <Content Include="Images\Items\Zeke%27s_Herald.png" />
+    <Content Include="Images\Items\Zenith_Edge.png" />
+    <Content Include="Images\Items\Zephyr.png" />
+    <Content Include="Images\Items\Zz%27Rots_Invitation.png" />
+    <Content Include="Images\Items\Zzrot_Portal.png" />
     <Content Include="Images\Traits\trait_icon_6_arcanist.png" />
     <Content Include="Images\Traits\trait_icon_6_assassin.png" />
     <Content Include="Images\Traits\trait_icon_6_bruiser.png" />
@@ -738,6 +865,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202232310103_ChangePlayRateToNullable2.resx">
       <DependentUpon>202202232310103_ChangePlayRateToNullable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203081928393_AddAvgItemPlacementToDatabase.resx">
+      <DependentUpon>202203081928393_AddAvgItemPlacementToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203081956067_AddItemsToChamp.resx">
+      <DependentUpon>202203081956067_AddItemsToChamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203082020505_ChangeChampItemsListToInt.resx">
+      <DependentUpon>202203082020505_ChangeChampItemsListToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203112231011_AddItemsToChamp1.resx">
+      <DependentUpon>202203112231011_AddItemsToChamp1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203112245111_AddItemIdToItems.resx">
+      <DependentUpon>202203112245111_AddItemIdToItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203142019413_ChangeItemsToItemStats.resx">
+      <DependentUpon>202203142019413_ChangeItemsToItemStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203152021038_AddUniqueItemsToDatabase.resx">
+      <DependentUpon>202203152021038_AddUniqueItemsToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203162000364_AddItemIdToItemClass.resx">
+      <DependentUpon>202203162000364_AddItemIdToItemClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203171811039_CommentOutIsShadowFromItemStats.resx">
+      <DependentUpon>202203171811039_CommentOutIsShadowFromItemStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203172023380_AddNameToAvgItemPlacement.resx">
+      <DependentUpon>202203172023380_AddNameToAvgItemPlacement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

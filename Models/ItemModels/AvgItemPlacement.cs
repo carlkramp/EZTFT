@@ -11,5 +11,6 @@ namespace EZTFT.Models.ItemModels
         public int id { get; set; }
         public int itemMode { get; set; }
         public double? playRate { get; set; }
+        public string name { get; set; }
     }
 }
