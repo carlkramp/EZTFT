@@ -29,8 +29,10 @@
                         var avgPlacement = "";
                         var playRatePercentage = "";
                         for (var i = 0; i < json.length; i++) {
+                            // Replaces all spaces in item name to underscores to match the names of the item image files
                             var name = json[i].name.replace(/ /g, "_");
-                            //var name = json[i].name;
+
+                            // Noramlizes playratePercentage data show to user in a XX.XX% format
                             playRatePercentage = json[i].playRate.toString();
                             if (playRatePercentage.length == 3) {
                                 playRatePercentage = playRatePercentage.concat("0%");
@@ -39,13 +41,14 @@
                                 playRatePercentage = playRatePercentage.concat("%");
                             }
 
+                            // Noramlizes avgPlacement data shown to user in a XX.XX format
                             avgPlacement = json[i].avgPlacement.toString();
-                            //if (avgPlacement.length == 1) {
-                            //    avgPlacement = avgPlacement.concat(".00");
-                            //}
-                            //else if (avgPlacement.length == 3) {
-                            //    avgPlacement = avgPlacement.concat("0");
-                            //}
+                            if (avgPlacement.length == 1) {
+                                avgPlacement = avgPlacement.concat(".00");
+                            }
+                            else if (avgPlacement.length == 3) {
+                                avgPlacement = avgPlacement.concat("0");
+                            }
 
                             return_data.push({
                                 'name': name,

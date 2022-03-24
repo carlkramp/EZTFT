@@ -7,9 +7,9 @@
 <table id="traitAvgPlacement" style="text-align: center" class="table table­‐hover">
     <thead class="table-primary">
         <tr>          
-            <th scope="col">Name</th>
+            <th scope="col">Trait</th>
             <th scope="col">Trait Tier</th>
-            <th scope="col"># Of Plays</th>
+            <th scope="col">Playrate</th>
             <th scope="col">AvgPlacement</th>
         </tr>
     </thead>
@@ -28,11 +28,40 @@
                             for (var i = 0; i < json.length; i++)                              
                             {
                                 const nameArray = json[i].name.split("_");
+
+                                // Normalizes playratePercentage data show to user in a XX.XX% format
+                                playRatePercentage = json[i].playRate.toString();                                
+                                if (playRatePercentage.length == 3) {
+                                    playRatePercentage = playRatePercentage.concat("0%");
+                                }
+                                else if (playRatePercentage.length == 1) {
+                                    playRatePercentage = playRatePercentage.concat(".00%");
+                                }
+                                else if (playRatePercentage.length == 4 && playRatePercentage[2] == ".") {
+                                    playRatePercentage = playRatePercentage.concat("0%");
+                                }
+                                else if (playRatePercentage.length == 2) {
+                                    playRatePercentage = playRatePercentage.concat(".00%")
+                                }
+                                else {
+                                    playRatePercentage = playRatePercentage.concat("%");
+                                }
+
+
+                                // Normalizes avgPlacement data shown to user in a XX.XX format
+                                avgPlacement = json[i].AvgPlacement.toString();
+                                if (avgPlacement.length == 1) {
+                                    avgPlacement = avgPlacement.concat(".00");
+                                }
+                                else if (avgPlacement.length == 3) {
+                                    avgPlacement = avgPlacement.concat("0");
+                                }
+
                                 return_data.push({
                                     'name': nameArray[1],
                                     'tier_current': json[i].tier_current,
-                                    'TraitMode': json[i].TraitMode,
-                                    'AvgPlacement': json[i].AvgPlacement
+                                    'playRate': playRatePercentage,
+                                    'AvgPlacement': avgPlacement
                                 })
                             }
                             return return_data;
@@ -42,14 +71,14 @@
                         {
                             data: "name",
                             render: function (data) {
-                                return '<p><img style="height: 48px; width: 48px;  background-color:white;padding:10px;" src="/Images/Traits/trait_icon_6_' + data + '.png"/>' + " - " + data + '</p>';
+                                return '<img style="height: 48px; width: 48px;  background-color:white;padding:10px;" src="/Images/Traits/trait_icon_6_' + data + '.png"/><p style="display: none" >' + data + '</p>';
                             }
                         },
                         {
                             data: "tier_current"
                         },
                         {
-                            data: "TraitMode"
+                            data: "playRate"
                         },
                         {
                             data: "AvgPlacement"

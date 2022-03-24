@@ -12,6 +12,8 @@ namespace EZTFT.Models.TraitModels
         public string name { get; set; }
         public int tier_current { get; set; }
         public int TraitMode { get; set; }
-        public int AvgPlacement { get; set; }
+        public double AvgPlacement { get; set; }
+
+        public double? playRate { get; set; }
     }
 }

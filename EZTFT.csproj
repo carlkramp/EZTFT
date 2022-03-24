@@ -260,6 +260,14 @@
     <Compile Include="Migrations\202203172023380_AddNameToAvgItemPlacement.Designer.cs">
       <DependentUpon>202203172023380_AddNameToAvgItemPlacement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203241906567_ChangeTraitAvgPlacementAvgPlacementVariableToDouble.cs" />
+    <Compile Include="Migrations\202203241906567_ChangeTraitAvgPlacementAvgPlacementVariableToDouble.Designer.cs">
+      <DependentUpon>202203241906567_ChangeTraitAvgPlacementAvgPlacementVariableToDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203241931127_AddPlayRateToTraitAvgPlacement.cs" />
+    <Compile Include="Migrations\202203241931127_AddPlayRateToTraitAvgPlacement.Designer.cs">
+      <DependentUpon>202203241931127_AddPlayRateToTraitAvgPlacement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ChampModels\AvgChampPlacement.cs" />
@@ -538,6 +546,10 @@
     <Content Include="Images\Champs\Taric.png" />
     <Content Include="Images\Champs\Teemo.png" />
     <Content Include="Images\Champs\Thresh.png" />
+    <Content Include="Images\Items\Anima_Visage.png" />
+    <Content Include="Images\Items\Arcanist_Emblem.png" />
+    <Content Include="Images\Items\Archangel%27s_Staff.png" />
+    <Content Include="Images\Items\Assassin_Emblem.png" />
     <Content Include="Images\Items\B.F._Sword.png" />
     <Content Include="Images\Items\Banshee%27s Silence.png" />
     <Content Include="Images\Items\Banshee%27s_Claw.png" />
@@ -545,72 +557,97 @@
     <Content Include="Images\Items\bloodthirster.png" />
     <Content Include="Images\Items\blue_buff.png" />
     <Content Include="Images\Items\blue_buff_radiant.png" />
+    <Content Include="Images\Items\Bodyguard_Emblem.png" />
     <Content Include="Images\Items\bramble_vest.png" />
+    <Content Include="Images\Items\Bruiser_Emblem.png" />
     <Content Include="Images\Items\chain_vest.png" />
     <Content Include="Images\Items\Chalice of Charity.png" />
     <Content Include="Images\Items\Chalice_of_Power.png" />
+    <Content Include="Images\Items\Challenger_Emblem.png" />
+    <Content Include="Images\Items\Chemtech_Emblem.png" />
+    <Content Include="Images\Items\Clockwork_Emblem.png" />
     <Content Include="Images\Items\Covalent Spark.png" />
-    <Content Include="Images\Items\death_blade.png" />
+    <Content Include="Images\Items\Death%27s_Defiance.png" />
+    <Content Include="Images\Items\Deathblade.png" />
+    <Content Include="Images\Items\Debonair_Emblem.png" />
     <Content Include="Images\Items\Demonslayer.png" />
     <Content Include="Images\Items\Dragon%27s Will.png" />
     <Content Include="Images\Items\Dragon%27s_Claw.png" />
     <Content Include="Images\Items\Dvarapala_Stoneplate.png" />
     <Content Include="Images\Items\edge_of_night.png" />
     <Content Include="Images\Items\edge_of_night_radiant.png" />
+    <Content Include="Images\Items\Enforcer_Emblem.png" />
     <Content Include="Images\Items\Eternal Whisper.png" />
+    <Content Include="Images\Items\Eternal_Winter.png" />
     <Content Include="Images\Items\Fist of Fairness.png" />
     <Content Include="Images\Items\frozen_heart.png" />
     <Content Include="Images\Items\Frozen_Heart_of_Gold.png" />
-    <Content Include="Images\Items\gaints_belt.png" />
     <Content Include="Images\Items\gargoyle_stoneplate.png" />
+    <Content Include="Images\Items\Giant%27s_Belt.png" />
     <Content Include="Images\Items\giant_slayer.png" />
     <Content Include="Images\Items\Glamorous_Gauntlet.png" />
+    <Content Include="Images\Items\Gold_Collector.png" />
     <Content Include="Images\Items\guardian_angel.png" />
     <Content Include="Images\Items\Guinsoo%27s_Rageblade.png" />
     <Content Include="Images\Items\Guinsoo%27s_Reckoning.png" />
-    <Content Include="Images\Items\Hand_Of_Justice.png" />
+    <Content Include="Images\Items\Hand_of_Justice.png" />
+    <Content Include="Images\Items\Hextech_Emblem.png" />
     <Content Include="Images\Items\hextech_gunblade.png" />
     <Content Include="Images\Items\Hextech_Lifeblade.png" />
     <Content Include="Images\Items\infinity_edge.png" />
+    <Content Include="Images\Items\Innovator_Emblem.png" />
     <Content Include="Images\Items\ionic_spark.png" />
     <Content Include="Images\Items\Jeweled_Gauntlet.png" />
     <Content Include="Images\Items\last_whisper.png" />
     <Content Include="Images\Items\Locket_of_Targon_Prime.png" />
-    <Content Include="Images\Items\Lock_of_the_Iron_Solari.png" />
+    <Content Include="Images\Items\Locket_of_the_Iron_Solari.png" />
     <Content Include="Images\Items\Luminous_Deathblade.png" />
+    <Content Include="Images\Items\Manazane.png" />
+    <Content Include="Images\Items\Mercenary_Emblem.png" />
     <Content Include="Images\Items\Mistral.png" />
     <Content Include="Images\Items\morellonomicon.png" />
     <Content Include="Images\Items\More_More-ellonomicon.png" />
+    <Content Include="Images\Items\Mutant_Emblem.png" />
     <Content Include="Images\Items\Needlessly_Large_Rod.png" />
     <Content Include="Images\Items\negatron_cloak.png" />
+    <Content Include="Images\Items\Obsidian_Cleaver.png" />
     <Content Include="Images\Items\Quickestsilver.png" />
     <Content Include="Images\Items\quicksilver.png" />
     <Content Include="Images\Items\Rabadon%27s_Ascended_Deathcap.png" />
     <Content Include="Images\Items\Rabadon%27s_Deathcap.png" />
     <Content Include="Images\Items\Radiant_Redemption.png" />
-    <Content Include="Images\Items\rapid_fire_cannon.png" />
+    <Content Include="Images\Items\Randuin%27s_Sanctum.png" />
+    <Content Include="Images\Items\Rapid_Firecannon.png" />
     <Content Include="Images\Items\Rapid_Lightcannon.png" />
     <Content Include="Images\Items\Rascal%27s_Gloves.png" />
     <Content Include="Images\Items\recurve_bow.png" />
     <Content Include="Images\Items\redemption.png" />
+    <Content Include="Images\Items\Rockeet-Propelled_Fist.png" />
     <Content Include="Images\Items\Rosethorn_Vest.png" />
     <Content Include="Images\Items\Runaan%27s_Hurricane.png" />
     <Content Include="Images\Items\Runaan%27s_Tempest.png" />
+    <Content Include="Images\Items\Scholar_Emblem.png" />
+    <Content Include="Images\Items\Scrap_Emblem.png" />
     <Content Include="Images\Items\Shroud_of_Reverance.png" />
     <Content Include="Images\Items\shroud_of_stillness.png" />
+    <Content Include="Images\Items\Sniper_Emblem.png" />
+    <Content Include="Images\Items\Socialite_Emblem.png" />
     <Content Include="Images\Items\sparring_gloves.png" />
     <Content Include="Images\Items\spatula.png" />
     <Content Include="Images\Items\Spear_of_Hirana.png" />
     <Content Include="Images\Items\Spear_of_Shojin.png" />
     <Content Include="Images\Items\Statikk%27s_Favor.png" />
     <Content Include="Images\Items\statikk_shiv.png" />
+    <Content Include="Images\Items\Striker_Emblem.png" />
     <Content Include="Images\Items\sunfire_cape.png" />
     <Content Include="Images\Items\Sunlight_Cape.png" />
-    <Content Include="Images\Items\tacticians_crown.png" />
+    <Content Include="Images\Items\Syndicate_Emblem.png" />
+    <Content Include="Images\Items\Tactician%27s_Crown.png" />
     <Content Include="Images\Items\tear_of_the_goddess.png" />
-    <Content Include="Images\Items\Thieves_Gloves.png" />
+    <Content Include="Images\Items\Thief%27s_Gloves.png" />
     <Content Include="Images\Items\Titan%27s_Resolve.png" />
     <Content Include="Images\Items\Titan%27s_Vow.png" />
+    <Content Include="Images\Items\Trinity_Force.png" />
     <Content Include="Images\Items\Urf-Angel%27s_Staff.png" />
     <Content Include="Images\Items\Warmog%27s_Armor.png" />
     <Content Include="Images\Items\Warmog%27s_Pride.png" />
@@ -618,8 +655,9 @@
     <Content Include="Images\Items\Zeke%27s_Herald.png" />
     <Content Include="Images\Items\Zenith_Edge.png" />
     <Content Include="Images\Items\Zephyr.png" />
+    <Content Include="Images\Items\Zhonya%27s_Paradox.png" />
     <Content Include="Images\Items\Zz%27Rots_Invitation.png" />
-    <Content Include="Images\Items\Zzrot_Portal.png" />
+    <Content Include="Images\Items\Zz%27Rot_Portal.png" />
     <Content Include="Images\Traits\trait_icon_6_arcanist.png" />
     <Content Include="Images\Traits\trait_icon_6_assassin.png" />
     <Content Include="Images\Traits\trait_icon_6_bruiser.png" />
@@ -895,6 +933,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203172023380_AddNameToAvgItemPlacement.resx">
       <DependentUpon>202203172023380_AddNameToAvgItemPlacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203241906567_ChangeTraitAvgPlacementAvgPlacementVariableToDouble.resx">
+      <DependentUpon>202203241906567_ChangeTraitAvgPlacementAvgPlacementVariableToDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203241931127_AddPlayRateToTraitAvgPlacement.resx">
+      <DependentUpon>202203241931127_AddPlayRateToTraitAvgPlacement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

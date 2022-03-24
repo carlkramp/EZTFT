@@ -26,11 +26,11 @@ namespace EZTFT.Controllers
         public ActionResult Index()
         {
             // Get and display average item placements to user
-            //List<AvgItemPlacement> itemPlacements = new List<AvgItemPlacement>();
+            List<AvgItemPlacement> itemPlacements = new List<AvgItemPlacement>();
 
-            //DropOldData();
-            //itemPlacements = GetAverageItemPlacementsAndReturnList();
-            //SaveAverageItemPlacementsToDatabase(itemPlacements);
+            DropOldData();
+            itemPlacements = GetAverageItemPlacementsAndReturnList();
+            SaveAverageItemPlacementsToDatabase(itemPlacements);
 
 
             // Update items from Community Dragon
@@ -51,7 +51,8 @@ namespace EZTFT.Controllers
 
             double rowsCount = rows.Count();
 
-            string queryString = "SELECT ItemStats.name, Count(*) AS ItemMode, AVG(Champs.placement) AS AvgPlacement FROM Champs INNER JOIN ItemStats ON Champs.id = ItemStats.Champ_id GROUP BY ItemStats.name";
+            //string queryString = "SELECT ItemStats.name, Count(*) AS ItemMode, AVG(Champs.placement) AS AvgPlacement FROM Champs INNER JOIN ItemStats ON Champs.id = ItemStats.Champ_id GROUP BY ItemStats.name";
+            string queryString = "SELECT ItemStats.name, Count(*) AS ItemMode, AVG(CAST(placement AS DECIMAL(10, 2))) AS AvgPlacement FROM ItemStats JOIN Champs ON Itemstats.Champ_id = Champs.id GROUP BY ItemStats.name";
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -66,14 +67,39 @@ namespace EZTFT.Controllers
                         AvgItemPlacement avgItemPlacement = new AvgItemPlacement();
                         avgItemPlacement.name = reader.GetString(0);
                         avgItemPlacement.itemMode = reader.GetInt32(1);
-                        avgItemPlacement.avgPlacement = reader.GetInt32(2);
+                        avgItemPlacement.avgPlacement = (double)reader.GetDecimal(2);
                         avgItemPlacement.playRate = avgItemPlacement.itemMode / rowsCount;
 
                         string itemPlayRate = "";
                         double itemPlayRateDouble = 0;
+                        string averagePlacementSlice = "";
+                        double averagePlacementSliceDouble = 0;
+
+                        if (avgItemPlacement.avgPlacement.ToString().Length > 4)
+                        {
+                            averagePlacementSlice = avgItemPlacement.avgPlacement.ToString().Substring(0, 4);
+                            averagePlacementSliceDouble = Convert.ToDouble(averagePlacementSlice);
+                        }
+                        else if (avgItemPlacement.avgPlacement.ToString().Length == 3)
+                        {
+                            averagePlacementSlice = avgItemPlacement.avgPlacement.ToString() + "0";
+                            averagePlacementSliceDouble = Convert.ToDouble(averagePlacementSlice);
+                        }
+                      
+                        else if (avgItemPlacement.avgPlacement.ToString().Length == 1)
+                        {
+                            averagePlacementSlice = avgItemPlacement.avgPlacement.ToString() + ".00";
+                            averagePlacementSliceDouble = Convert.ToDouble(averagePlacementSlice);
+                        }
+                        else
+                        {
+                            averagePlacementSliceDouble = avgItemPlacement.avgPlacement;
+                        }
 
                         itemPlayRate = (avgItemPlacement.playRate * 100).ToString().Substring(0, 4);
                         itemPlayRateDouble = Convert.ToDouble(itemPlayRate);
+
+                        avgItemPlacement.avgPlacement = averagePlacementSliceDouble;
 
                         avgItemPlacement.playRate = itemPlayRateDouble;
 
