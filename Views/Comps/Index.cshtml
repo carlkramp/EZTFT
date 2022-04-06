@@ -1,7 +1,14 @@
-﻿
+﻿@model EZTFT.ViewModels.CompViewModel
+
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
+
+<form method="get" action="Result">
+    <input type="text" id="searchTerm" name="searchTerm" />
+    <input type="submit" />
+</form>
 

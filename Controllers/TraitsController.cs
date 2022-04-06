@@ -26,9 +26,9 @@ namespace EZTFT.Controllers
         public ActionResult Index()
         {
             // Gets trait data from Comps/TraitDtoes tables and saves it to TraitAvgPlacement table 
-            var myNewList = GetTraits();
-            DropOldData();
-            SaveAverageTraitPlacementsToDatabase(myNewList);
+            //var myNewList = GetTraits();
+            //DropOldData();
+            //SaveAverageTraitPlacementsToDatabase(myNewList);
 
             //Deletes old data from TraitAvgPlacement Table
           
@@ -46,7 +46,6 @@ namespace EZTFT.Controllers
             double rowsCount = rows.Count();
 
             string queryString = "SELECT TraitDtoes.name, TraitDtoes.tier_current, Count(*) AS TraitMode, AVG(CAST(Comps.placement AS DECIMAL(10, 2))) AS AvgPlacement FROM Comps INNER JOIN TraitDtoes ON Comps.id = TraitDtoes.Comp_id WHERE TraitDtoes.tier_current > 0 GROUP BY TraitDtoes.name, TraitDtoes.tier_current";
-            //string queryString = "SELECT TraitDtoes.name, TraitDtoes.tier_current, Count(*) AS TraitMode, AVG(Comps.placement) AS AvgPlacement FROM Comps INNER JOIN TraitDtoes ON Comps.id = TraitDtoes.Comp_id WHERE TraitDtoes.tier_current > 0 GROUP BY TraitDtoes.name, TraitDtoes.tier_current";
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

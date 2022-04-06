@@ -26,24 +26,24 @@ namespace EZTFT.Controllers
         public ActionResult Index()
         {
             // Get and display average item placements to user
-            List<AvgItemPlacement> itemPlacements = new List<AvgItemPlacement>();
 
-            DropOldData();
-            itemPlacements = GetAverageItemPlacementsAndReturnList();
-            SaveAverageItemPlacementsToDatabase(itemPlacements);
-
+            //List<AvgItemPlacement> itemPlacements = new List<AvgItemPlacement>();
+            //DropOldData();
+            //itemPlacements = GetAverageItemPlacements();
+            //SaveAverageItemPlacementsToDb(itemPlacements);
 
             // Update items from Community Dragon
+
             //GetItemsFromCommunityDragonAsync();
             //Item[] itemArray = GetItemsFromCommunityDragonAsync();
-            //SaveItemsToDatabase(itemArray);
+            //SaveItemsToDb(itemArray);
 
             return View();
         }
 
        
 
-        public List<AvgItemPlacement> GetAverageItemPlacementsAndReturnList()
+        public List<AvgItemPlacement> GetAverageItemPlacements()
         {
             List<AvgItemPlacement> avgItemPlacementsList = new List<AvgItemPlacement>();
 
@@ -51,7 +51,6 @@ namespace EZTFT.Controllers
 
             double rowsCount = rows.Count();
 
-            //string queryString = "SELECT ItemStats.name, Count(*) AS ItemMode, AVG(Champs.placement) AS AvgPlacement FROM Champs INNER JOIN ItemStats ON Champs.id = ItemStats.Champ_id GROUP BY ItemStats.name";
             string queryString = "SELECT ItemStats.name, Count(*) AS ItemMode, AVG(CAST(placement AS DECIMAL(10, 2))) AS AvgPlacement FROM ItemStats JOIN Champs ON Itemstats.Champ_id = Champs.id GROUP BY ItemStats.name";
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
 
@@ -116,7 +115,7 @@ namespace EZTFT.Controllers
             return avgItemPlacementsList;
         }
 
-        public void SaveAverageItemPlacementsToDatabase(List<AvgItemPlacement> avgItemPlacements)
+        public void SaveAverageItemPlacementsToDb(List<AvgItemPlacement> avgItemPlacements)
         {
             foreach (var avgItemPlacement in avgItemPlacements)
             {
@@ -157,7 +156,7 @@ namespace EZTFT.Controllers
             }
         }     
 
-        public void SaveItemsToDatabase(Item[] itemArray)
+        public void SaveItemsToDb(Item[] itemArray)
         {
             Item itemInDb = new Item();
 

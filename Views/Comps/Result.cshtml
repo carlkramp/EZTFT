@@ -1,0 +1,93 @@
+﻿@model EZTFT.ViewModels.CompViewModel
+
+@{
+    ViewBag.Title = "Result";
+}
+<br />
+
+<div style="margin-left: 500px;">
+    <form method="get" action="Result">
+        <input type="text" id="searchTerm" name="searchTerm" />
+        <input type="submit" />
+    </form>
+</div>
+
+<br>
+
+<table id="compSearch" class="table table­‐hover">
+    <thead class="table-primary">
+        <tr style="text-align: center">
+            <th scope="col">Champs</th>
+            <th scope="col">Traits</th>
+            <th scope="col" style="border-right: 2px solid">Carry</th>
+        </tr>
+    </thead>
+    <tbody style="font-size: 24px; font-weight: 600; text-align: left" class="table-primary">
+     @foreach (var comp in Model.comps)
+       { 
+        <tr>
+            <td>
+                @foreach (var unit in comp.units)
+                {
+                    {
+                        string[] champName = unit.character_id.Split('_');
+                        string champName2 = champName[1] + ".png";
+
+                        <img  style="height: 48px; width: 48px;" src="/Images/Champs/@champName2" />
+                    }
+
+                }
+            </td>
+            <td>
+                @foreach (var trait in comp.traits)
+                {
+                    if (trait.tier_current == 0)
+                    {
+                        continue;
+                    }
+                    string[] traitName = trait.name.Split('_');
+                    string traitName2 = traitName[1] + ".svg";
+                    var traitTier = "";
+                    if (trait.tier_current == 1)
+                    {
+                        traitTier = "Bronze.png";
+                    }
+                    else if (trait.tier_current == 2)
+                    {
+                        traitTier = "Silver.png";
+                    }
+                    else if (trait.tier_current == 3)
+                    {
+                        traitTier = "Gold.png";
+                    }
+                    else if (trait.tier_current == 4)
+                    {
+                        traitTier = "Prismatic.png";
+                    }                    
+
+                    <div style="display: inline; padding-right: 6px;">
+                        <img style="height: 40px; width: 40px; margin-right: 0px;  position: absolute;" src="~/Images/Traits/TraitBackgrounds/@traitTier" />
+                        <img style="height: 22px; width: 22px; position: relative; margin-left: 9px; margin-bottom: 5px;" src="~/Images/Traits/TraitSvgs/@traitName2" />
+                    </div>
+                }
+            </td>
+            <td>
+                @foreach (var item in comp.items)
+                {                   
+
+                    <img style="height: 40px; width: 40px;" src="~/Images/Items/@item" />
+                }
+            </td>
+        </tr>
+      }            
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+            $(document).ready(function () {
+                $('#compSearch').DataTable();
+            });
+    </script>
+}
+

@@ -8,7 +8,6 @@ namespace EZTFT.Models.CompModels
 {
     public class Comp
     {
-   
         public int id { get; set; }
 
         public int placement { get; set; }

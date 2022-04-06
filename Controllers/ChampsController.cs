@@ -27,7 +27,7 @@ namespace EZTFT.Controllers
 
             ////FindAndSaveMatch();
 
-            ////DropOldData();
+            //DropOldData();
             //champPlacements = GetAverageChampPlacementsAndReturnList();
             //SaveAverageChampPlacementsToDatabase(champPlacements);
 
