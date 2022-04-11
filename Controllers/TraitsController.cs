@@ -26,12 +26,12 @@ namespace EZTFT.Controllers
         public ActionResult Index()
         {
             // Gets trait data from Comps/TraitDtoes tables and saves it to TraitAvgPlacement table 
-            //var myNewList = GetTraits();
-            //DropOldData();
-            //SaveAverageTraitPlacementsToDatabase(myNewList);
+            var myNewList = GetTraits();
+            DropOldData();
+            SaveAverageTraitPlacementsToDatabase(myNewList);
 
             //Deletes old data from TraitAvgPlacement Table
-          
+
 
             return View();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EZTFT.Models.ItemModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,8 @@ namespace EZTFT.Models
     {
         public int id { get; set; }
         public List<int> items { get; set; }
+
+        //public UnitItems unitItems { get; set; }
         public string character_id { get; set; }
         public string chosen { get; set; }
         public string name { get; set; }

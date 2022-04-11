@@ -268,6 +268,14 @@
     <Compile Include="Migrations\202203241931127_AddPlayRateToTraitAvgPlacement.Designer.cs">
       <DependentUpon>202203241931127_AddPlayRateToTraitAvgPlacement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204071856344_addUnitDtoIdToChamp.cs" />
+    <Compile Include="Migrations\202204071856344_addUnitDtoIdToChamp.Designer.cs">
+      <DependentUpon>202204071856344_addUnitDtoIdToChamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204071858062_addUnitDtoIdToChamp2.cs" />
+    <Compile Include="Migrations\202204071858062_addUnitDtoIdToChamp2.Designer.cs">
+      <DependentUpon>202204071858062_addUnitDtoIdToChamp2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ChampModels\AvgChampPlacement.cs" />
@@ -280,6 +288,7 @@
     <Compile Include="Models\ItemModels\CDResponseData.cs" />
     <Compile Include="Models\ItemModels\Item.cs" />
     <Compile Include="Models\ItemModels\ItemStats.cs" />
+    <Compile Include="Models\ItemModels\UnitItems.cs" />
     <Compile Include="Models\MatchModels\InfoDto.cs" />
     <Compile Include="Models\MatchDto.cs" />
     <Compile Include="Models\MatchModels\MatchId.cs" />
@@ -650,7 +659,7 @@
     <Content Include="Images\Items\Thief%27s_Gloves.png" />
     <Content Include="Images\Items\Titan%27s_Resolve.png" />
     <Content Include="Images\Items\Titan%27s_Vow.png" />
-    <Content Include="Images\Items\Trinity_Force.png" />
+    <Content Include="Images\Items\Infinity_Force.png" />
     <Content Include="Images\Items\Urf-Angel%27s_Staff.png" />
     <Content Include="Images\Items\Warmog%27s_Armor.png" />
     <Content Include="Images\Items\Warmog%27s_Pride.png" />
@@ -998,6 +1007,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203241931127_AddPlayRateToTraitAvgPlacement.resx">
       <DependentUpon>202203241931127_AddPlayRateToTraitAvgPlacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204071856344_addUnitDtoIdToChamp.resx">
+      <DependentUpon>202204071856344_addUnitDtoIdToChamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204071858062_addUnitDtoIdToChamp2.resx">
+      <DependentUpon>202204071858062_addUnitDtoIdToChamp2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

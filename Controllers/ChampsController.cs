@@ -23,13 +23,13 @@ namespace EZTFT.Controllers
         // GET: Champs
         public ActionResult Index()
         {
-            //List<AvgChampPlacement> champPlacements = new List<AvgChampPlacement>();
+            List<AvgChampPlacement> champPlacements = new List<AvgChampPlacement>();
 
             ////FindAndSaveMatch();
 
-            //DropOldData();
-            //champPlacements = GetAverageChampPlacementsAndReturnList();
-            //SaveAverageChampPlacementsToDatabase(champPlacements);
+            DropOldData();
+            champPlacements = GetAverageChampPlacementsAndReturnList();
+            SaveAverageChampPlacementsToDatabase(champPlacements);
 
             return View();
         }

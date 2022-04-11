@@ -118,3 +118,5 @@ C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.
 C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddNameToAvgItemPlacement.resources
 C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.ChangeTraitAvgPlacementAvgPlacementVariableToDouble.resources
 C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.AddPlayRateToTraitAvgPlacement.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.addUnitDtoIdToChamp.resources
+C:\Users\carlk\OneDrive\Desktop\myProjects\C#\EZTFT\EZTFT\EZTFT\obj\Debug\EZTFT.Migrations.addUnitDtoIdToChamp2.resources

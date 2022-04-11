@@ -22,6 +22,8 @@ namespace EZTFT.Models
         public DbSet<AvgItemPlacement> AvgItemPlacement { get; set; }
         public DbSet<ItemStats> ItemStats { get; set; }
         public DbSet<Item> Items { get; set; }
+
+        //public DbSet<UnitItems> unitItems { get; set; }
         public DbSet<Location> location { get; set; }
 
         public ApplicationDbContext()

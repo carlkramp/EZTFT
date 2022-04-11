@@ -12,5 +12,7 @@ namespace EZTFT.Models
         public int placement { get; set; }
         public string character_id { get; set; }    
         public List<ItemStats> items { get; set; }
+
+        public int unitDtoId { get; set; }
     }
 }

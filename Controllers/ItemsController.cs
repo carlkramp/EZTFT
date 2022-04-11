@@ -27,10 +27,10 @@ namespace EZTFT.Controllers
         {
             // Get and display average item placements to user
 
-            //List<AvgItemPlacement> itemPlacements = new List<AvgItemPlacement>();
-            //DropOldData();
-            //itemPlacements = GetAverageItemPlacements();
-            //SaveAverageItemPlacementsToDb(itemPlacements);
+            List<AvgItemPlacement> itemPlacements = new List<AvgItemPlacement>();
+            DropOldData();
+            itemPlacements = GetAverageItemPlacements();
+            SaveAverageItemPlacementsToDb(itemPlacements);
 
             // Update items from Community Dragon
 

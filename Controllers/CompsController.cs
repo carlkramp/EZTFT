@@ -36,16 +36,7 @@ namespace EZTFT.Controllers
 
         public ActionResult Result(string searchTerm)
         {
-            //CompViewModel compViewModel = new CompViewModel();
-            //List<int> compIds = ChampCompSearch(searchTerm);
-            //List<Comp> comps = GetComps(compIds);
-            //compViewModel.comps = comps;
-            //compViewModel.searchTerm = searchTerm + ".png";
-
-            //CompViewModel compViewModel = new CompViewModel();
-             //searchResult = new searchResult();
-            searchResult searchResult = ChampCompSearch(searchTerm);
-            CompViewModel compViewModel = GetComps(searchResult);
+            CompViewModel compViewModel = GetComps(searchTerm);
             compViewModel.searchTerm = searchTerm + ".png";
 
             return View(compViewModel);
@@ -196,7 +187,7 @@ namespace EZTFT.Controllers
             } while (x < 20);
 
             throw new ArgumentException("Error getting matchDto from Api, how did you get here");
-        }
+        }      
 
         public void SaveMatches(List<MatchDto> matchDtoes)
         {
@@ -262,6 +253,7 @@ namespace EZTFT.Controllers
                             }
 
                             champ.items = itemList;
+                            champ.unitDtoId = unit.id;
                             _context.Champs.Add(champ);
                             _context.SaveChanges();
 
@@ -349,50 +341,57 @@ namespace EZTFT.Controllers
                 command9.ExecuteNonQuery();
 
             }
+        } 
+
+        public int GetChampRarity(string userInput)
+        {
+            string queryString = "SELECT UnitDtoes.rarity FROM UnitDtoes WHERE UnitDtoes.character_id = 'TFT6_" + userInput + "'";
+            string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
+            int champRarity = -1;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        champRarity = reader.GetInt32(0);                       
+
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+            }
+
+            return champRarity;
+
         }
 
         // Perform SQL search to retrieve list of comps ids which contain searched unit
-        //public List<int> ChampCompSearch(string userInput)
-        //{
-        //    string champName = userInput;
-        //    List<int> compIds = new List<int>();
-
-        //    string queryString = "SELECT UnitDtoes.Comp_id FROM UnitDtoes JOIN Comps ON UnitDtoes.Comp_id = Comps.id WHERE UnitDtoes.Comp_id IN ( SELECT Comp_id FROM UnitDtoes WHERE UnitDtoes.character_id = 'TFT6_" + champName + "') GROUP BY UnitDtoes.Comp_id";
-        //    string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
-
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(queryString, connection);
-        //        connection.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
-        //        try
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                int compId = reader.GetInt32(0);
-        //                compIds.Add(compId);
-
-        //            }
-        //        }
-        //        finally
-        //        {
-        //            reader.Close();
-        //        }
-        //    }
-
-        //    return compIds;
-        //}
-
-
-        // Perform SQL search to retrieve list of comps ids which contain searched unit
-        public searchResult ChampCompSearch(string userInput)
+        public List<int> ChampCompSearch(string userInput)
         {
-            searchResult searchResult = new searchResult();
-
-            string champName = userInput;
+            // Declare variables
             List<int> compIds = new List<int>();
+            string queryString = "";
+            
+            // Get champ rarity
+            int champRarity = GetChampRarity(userInput);
 
-            string queryString = "SELECT UnitDtoes.Comp_id FROM UnitDtoes JOIN Comps ON UnitDtoes.Comp_id = Comps.id WHERE UnitDtoes.Comp_id IN ( SELECT Comp_id FROM UnitDtoes WHERE UnitDtoes.character_id = 'TFT6_" + champName + "') GROUP BY UnitDtoes.Comp_id";
+            // If champ rarity(cost) is 0-2, only return comps in which the searched champ's tier is 3 (unit is 3 starred), otherwise if the champ's rarity is 3 or higher, return any comps that champ is in.
+            if (champRarity < 3)
+            {
+                queryString = "SELECT UnitDtoes.Comp_id FROM UnitDtoes JOIN Comps ON UnitDtoes.Comp_id = Comps.id WHERE UnitDtoes.Comp_id IN ( SELECT Comp_id FROM UnitDtoes WHERE UnitDtoes.character_id = 'TFT6_" + userInput + "' AND UnitDtoes.tier = 3) GROUP BY UnitDtoes.Comp_id";
+            }
+            else
+            {
+                queryString = "SELECT UnitDtoes.Comp_id FROM UnitDtoes JOIN Comps ON UnitDtoes.Comp_id = Comps.id WHERE UnitDtoes.Comp_id IN ( SELECT Comp_id FROM UnitDtoes WHERE UnitDtoes.character_id = 'TFT6_" + userInput + "') GROUP BY UnitDtoes.Comp_id";
+            }
+
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=aspnet-EZTFT-20220118022938;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -403,7 +402,7 @@ namespace EZTFT.Controllers
                 try
                 {
                     while (reader.Read())
-                    {                        
+                    {
                         int compId = reader.GetInt32(0);
                         compIds.Add(compId);
 
@@ -413,69 +412,23 @@ namespace EZTFT.Controllers
                 {
                     reader.Close();
                 }
-            }
+            }          
 
-            searchResult.compIds = compIds;
-            searchResult.searchTerm = userInput;
-
-            return searchResult;
+            return compIds;
         }
 
-        //// Performs linq query using list of comp ids to find individual comps 
-        //public List<Comp> GetComps(List<int> compIds)
-        //{
-        //    List<Comp> compList = new List<Comp>();
-
-        //    foreach (var compId in compIds)
-        //    {
-        //        Comp newComp = new Comp();
-
-        //       var compQuery =
-        //            from Comp in _context.Comps
-        //            where Comp.id == compId
-        //            select new {
-        //            myCompId = Comp.id,
-        //            myCompPlacement = Comp.placement,
-        //            myCompTraits = Comp.traits,
-        //            myCompUnits = Comp.units                      
-        //             };
-
-        //        foreach (var comp in compQuery)
-        //        {
-        //            newComp.id = comp.myCompId;
-        //            newComp.placement = comp.myCompPlacement;                             
-        //            // Sort units in comp by their cost 1-5
-        //            List<UnitDto> sortedUnitList = comp.myCompUnits.OrderBy(m => m.rarity).ToList();
-        //            newComp.units = sortedUnitList;
-        //            //Sort traits by their tier 1-4
-        //            List<TraitDto> sortedTraitList = comp.myCompTraits.OrderBy(t => t.tier_current).ToList();
-        //            newComp.traits = sortedTraitList;
-
-
-        //            //newComp.items = newComp.units[].name = 
-
-        //        }                             
-
-        //        compList.Add(newComp);
-
-        //    }
-
-        //    return compList;
-
-        //}
-
-        // Performs linq query using list of comp ids to find individual comps 
-        public CompViewModel GetComps(searchResult searchResult)
+        public CompViewModel GetComps(string userInput)
         {
+            //Declare variables
             CompViewModel compViewModel = new CompViewModel();
-            List<string> itemNames = new List<string>();
             List<CompResult> compList = new List<CompResult>();
 
-            foreach (var compId in searchResult.compIds)
-            {
-                //Comp newComp = new Comp();
-                CompResult newComp = new CompResult();
+            //Get list of compIds
+            List<int> compIds = ChampCompSearch(userInput);
 
+            // Perform linq query using list of comp ids to get individual comps
+            foreach (var compId in compIds)
+            {
                 var compQuery =
                      from Comp in _context.Comps
                      where Comp.id == compId
@@ -485,11 +438,15 @@ namespace EZTFT.Controllers
                          myCompPlacement = Comp.placement,
                          myCompTraits = Comp.traits,
                          myCompUnits = Comp.units
-                         
+
                      };
 
                 foreach (var comp in compQuery)
                 {
+                    // Reset the CompResult and list of item names for each new comp 
+                    CompResult newComp = new CompResult();
+                    List<string> itemNames = new List<string>();
+
                     newComp.id = comp.myCompId;
                     newComp.placement = comp.myCompPlacement;
                     // Sort units in comp by their cost 1-5
@@ -499,53 +456,51 @@ namespace EZTFT.Controllers
                     List<TraitDto> sortedTraitList = comp.myCompTraits.OrderBy(t => t.tier_current).ToList();
                     newComp.traits = sortedTraitList;
 
-                    List<int> items = new List<int>();
-                    items.Clear();
-                    itemNames.Clear();
-
                     for (int x = 0; x < newComp.units.Count; x++)
                     {
+                        // Convert champ names from TFT6_Name to just Name, ie, TFT6_Jhin to Jhin
                         int charPos = newComp.units[x].character_id.IndexOf("_") + 1;
                         string champName = newComp.units[x].character_id.Substring(charPos);
-                      
-                        if (champName == searchResult.searchTerm)
-                        {                            
-                            if (comp.myCompUnits[x].items != null)
+
+                        if (champName == userInput)
+                        {
+                            int unitId = newComp.units[x].id;
+
+                            var itemQuery =
+                                    from Champ in _context.Champs
+                                    where Champ.unitDtoId == unitId
+                                    select new
+                                    {
+                                        items = Champ.items
+                                    };
+
+                            // List of champs and their list of items, however should only return a singular champ matching the searched id
+                            var champItemsList = itemQuery.ToList();
+
+                            if (champItemsList != null)
                             {
-                                foreach (var item in comp.myCompUnits[x].items)
+                                // For each individual champ that the query returns, though there should only be one
+                                foreach (var champItems in champItemsList)
                                 {
-                                    items.Add(item);
+                                    // For each item in the list of items belonging to the return champ
+                                    foreach (var item in champItems.items)
+                                    {
+                                        // Item names from Riot API have a space betweeen them, but spaces are replaced with underscores here so their names can be used in the src variable in <img> tags
+                                        string itemName = item.name.Replace(" ", "_");
+                                        itemName = itemName + ".png";
+                                        itemNames.Add(itemName);
+                                    }
                                 }
                             }
                         }
                     }
-                    
-                    for (int x = 0; x < items.Count; x++)
-                    {                        
-                         int itemId = items[x];
-
-                         var itemQuery =
-                             from dbItem in _context.Items
-                             where dbItem.item_id == itemId
-                             select dbItem;
-
-                         Item item = itemQuery.FirstOrDefault();
-                         string itemName = item.name.Replace(" ", "_");
-                         itemName = itemName + ".png";
-                         itemNames.Add(itemName);
-                    }
-
                     newComp.items = itemNames;
-                    
-
+                    compList.Add(newComp);
                 }
-
-                compList.Add(newComp);
-
             }
 
             compViewModel.comps = compList;
-           
+
             return compViewModel;
 
         }
